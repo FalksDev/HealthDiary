@@ -67,4 +67,16 @@
       <_ContentIncludedByDefault Remove="wwwroot\lib\jquery\LICENSE.txt" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Pages" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\HealthDiary.Infrastructure\HealthDiary.Infrastructure.csproj" />
+    </ItemGroup>
+
 </Project>
