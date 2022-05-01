@@ -8,10 +8,17 @@
 
     <ItemGroup>
       <ProjectReference Include="..\HealthDiary.Core\HealthDiary.Core.csproj" />
+      <ProjectReference Include="..\HealthDiary.Infrastructure\HealthDiary.Infrastructure.csproj" />
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="MediatR" Version="10.0.1" />
+      <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.4" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Middlewares" />
     </ItemGroup>
 
 </Project>

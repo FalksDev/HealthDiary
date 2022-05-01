@@ -13,7 +13,8 @@ public static class DependencyInjection
     {
         services.AddDbContext<ApplicationDBContext>(opts =>
         {
-            opts.UseSqlite(configuration.GetConnectionString("test_db"));
+            opts.UseSqlite(configuration.GetConnectionString("test_db"), 
+                b => b.MigrationsAssembly("HealthDiary.Web"));
         });
     }
 }

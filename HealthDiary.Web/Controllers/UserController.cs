@@ -1,3 +1,7 @@
+using HealthDiary.Application.Commands.User;
+using HealthDiary.Application.Queries.User;
+using HealthDiary.Core.Entities;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HealthDiary.Web.Controllers;
@@ -6,14 +10,26 @@ namespace HealthDiary.Web.Controllers;
 [Route("api/[controller]")]
 public class UserController : Controller
 {
-    public UserController()
+    private readonly IMediator _mediator;
+
+    public UserController(IMediator mediator)
     {
+        _mediator = mediator;
     }
 
-    [Route("Apa")]
-    [HttpGet]
-    public async Task<ActionResult<string>> Get()
+    [Route(nameof(AddUser))]
+    [HttpPost]
+    public async Task<ActionResult<User>> AddUser([FromBody] AddUserCommand command)
     {
-        return "APA";
+        var user = await _mediator.Send(command);
+        return Ok(user);
+    }
+
+    [Route(nameof(GetUserByUserName))]
+    [HttpGet]
+    public async Task<ActionResult<User>> GetUserByUserName(string userName)
+    {
+        var user = await _mediator.Send(new GetUserByUserNameQuery(userName));
+        return Ok(user);
     }
 }
